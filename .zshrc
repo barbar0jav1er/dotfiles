@@ -1,29 +1,21 @@
 
 export ZSH="$HOME/.oh-my-zsh"
-source /opt/homebrew/opt/spaceship/spaceship.zsh
-
-source $ZSH/oh-my-zsh.sh
-
-# ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
+
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 plugins=(  
   git
   kubectl
   argocd
-  fnm)
+  fnm
+)
 
+source $ZSH/oh-my-zsh.sh
+
+source /opt/homebrew/opt/spaceship/spaceship.zsh
+# Custom Aliases
 alias cls="clear"
-
-
-# fnm
-FNM_PATH="/Users/bjvalmaseda/Library/Application Support/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/Users/bjvalmaseda/Library/Application Support/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-eval "$(fnm env --use-on-cd --shell zsh)"
 
 argocd_login() {
   local HOST="localhost:8080"
